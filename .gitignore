@@ -1,0 +1,18 @@
+# Dependency directories
+node_modules/
+
+# Environment configuration files
+.env
+.gitattributes
+
+# Build output
+/dist
+/build
+/out
+
+# Temporary files
+.tmp
+.cache
+
+# file checks
+text.json
