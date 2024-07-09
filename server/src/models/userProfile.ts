@@ -3,5 +3,4 @@ export interface UserProfile {
     email: string;
     name: string
     gender: string;
-    passwordHash: string;
 }
