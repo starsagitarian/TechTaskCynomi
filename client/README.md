@@ -1,40 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cynomi Sleep Tracker App Client
 
-## Getting Started
+This is the front-end client for the Cynomi Sleep Tracker App, built using Next.js and styled with Tailwind CSS. It provides a user interface for tracking and analyzing sleep patterns.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Form Submission**: Users can enter their sleep data, including name, email, gender, date, and hours slept.
+- **Data Visualization**: Displays a table of sleep data and a bar chart showing the last seven days of sleep trends.
+- **Responsive Design**: Optimized for both desktop and mobile viewing.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Prerequisites
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Before you begin, ensure you have the following installed:
+- Node.js (v14.x or later)
+- npm (v6.x or later)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Installation
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+To set up the client locally, follow these steps:
+ 
+1. navigate to the client/ folder
+2. Install the dependencies: npm install
+3. To run the application locally: npm run dev
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This will start the Next.js development server on http://localhost:3000. Navigate to this URL in your web browser to view the application.
 
-## Learn More
+Structure
+- pages/: Contains all the page components. Each page is associated with a route based on its file name.
+- components/: Reusable UI components.
+- styles/: CSS and Tailwind configuration files.
+- services/: Services for API interactions.
+- contexts/: React contexts for state management across components.
 
-To learn more about Next.js, take a look at the following resources:
+API Integration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The client interacts with a backend server via RESTful APIs. Make sure the backend server is running and accessible to fetch and post data as expected. Please make sure you have a dynamoDB set up for this application to run appropriately. You can find the respective documentation in the server/ folder.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { fetchSleepDataForLastSevenDays  } from '@/services/api';
 import { useSleepData } from '@/contexts/SleepDataContext'; 
