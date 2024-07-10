@@ -27,13 +27,13 @@ const TablePage: React.FC<TableProps> = () => {
     }, [userId, sleepData, setSleepData]);
 
     const handleRowClick = (date: string) => {
-        router.push('/chart?userId=${userId}&date=${date}');
+        router.push(`/chart?userId=${userId}&date=${date}&name=${encodeURIComponent(name)}`);
     };
 
 return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       <h1>Sleep Records for {name}</h1>
-      <table>
+      <table style={{ tableLayout: 'auto', alignItems: 'center', width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr>
             <th>Date</th>

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import * as echarts from 'echarts';
 import ReactECharts from 'echarts-for-react';
 import { fetchSleepDataForLastSevenDays } from '@/services/api';
+import { useSleepData } from '@/contexts/SleepDataContext';
 
 const ChartPage: React.FC = () => {
   const router = useRouter();
-  const { userId, date } = router.query as { userId: string; date: string };
+  const { userId, date, name } = router.query as { userId: string; date: string; name: string};
+  const { sleepData } = useSleepData();
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const ChartPage: React.FC = () => {
   const options = {
     title: {
       text: 'Sleep Trend',
-      subtext: `Data for ${userId}`,
+      subtext: `Data for ${decodeURIComponent(name)}`,
       left: 'center'
     },
     tooltip: {
