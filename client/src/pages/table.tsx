@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { fetchSleepDataForLastSevenDays  } from '@/services/api';
+import { useSleepData } from '@/contexts/SleepDataContext'; 
 
 interface SleepData {
     date: string;
@@ -15,18 +16,18 @@ interface TableProps {
 const TablePage: React.FC<TableProps> = () => {
     const router = useRouter();
     const { userId, name } = router.query as { userId: string; name: string };
-    const [sleepData, setSleepData] = useState([]);
+     const { sleepData, setSleepData } = useSleepData();
 
-    useEffect(() => {
-        if (userId) {
-        fetchSleepDataForLastSevenDays(userId)
-            .then(data => setSleepData(data))
-            .catch(err => console.error(err));
+  useEffect(() => {
+        if (userId && sleepData.length === 0) {
+            fetchSleepDataForLastSevenDays(userId)
+                .then(data => setSleepData(data))
+                .catch(err => console.error("Error fetching data:", err));
         }
-    }, [userId]);
+    }, [userId, sleepData, setSleepData]);
 
-    const handleRowClick = () => {
-        router.push('/chart?userId=${userId}');
+    const handleRowClick = (date: string) => {
+        router.push('/chart?userId=${userId}&date=${date}');
     };
 
 return (
@@ -41,7 +42,7 @@ return (
         </thead>
         <tbody>
           {sleepData.map((record: any, index: number) => (
-            <tr key={index} onClick={() => router.push(`/chart?userId=${userId}`)}>
+            <tr key={index} onClick={() => handleRowClick(record.date)}>
               <td>{record.date}</td>
               <td>{record.sleepTime}</td>
             </tr>
@@ -49,7 +50,7 @@ return (
         </tbody>
       </table>
       <button onClick={() => router.push('/')}>Home</button>
-      <button onClick={() => router.push('/form?userId=${userId}')}>Back To Form</button>
+      <button onClick={() => router.push('/form?userId=${userId}&date=${date}')}>Back To Form</button>
     </div>
   );
 };

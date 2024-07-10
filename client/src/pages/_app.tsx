@@ -1,6 +1,14 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { SleepDataProvider } from "@/contexts/SleepDataContext";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+
+const App = ({ Component, pageProps }: AppProps) => {
+  return (
+    <SleepDataProvider>
+      <Component {...pageProps} />
+    </SleepDataProvider>
+  );
 }
+
+export default App;
