@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { postUserData, fetchUserData } from '@/services/api';
 import { useRouter } from 'next/router';
+import styles from '../styles/sleepDataForm.module.css';
 
 interface FormData {
   name: string;
@@ -51,7 +52,6 @@ const SleepDataForm: React.FC<SleepDataFormProps> = ({ onSubmit }) => {
             console.log('Submission successful:', data);
             setFormData({ name: '', email: '', gender: '', date: '', sleepTime: 0 }); // Clear the form
             alert('Data submitted successfully');
-            router.push('/table');
         } catch (error: any) {
             console.error('Submission failed:', error);
             setError('Failed to submit data. Please try again.');
@@ -61,9 +61,9 @@ const SleepDataForm: React.FC<SleepDataFormProps> = ({ onSubmit }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-                <label htmlFor="name">Name:</label>
+        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded-lg shadow">
+            <div className="flex flex-col space-y-2">
+                <label htmlFor="name" className="font-semibold">Name:</label>
                 <input
                     type="text"
                     id="name"
@@ -71,11 +71,11 @@ const SleepDataForm: React.FC<SleepDataFormProps> = ({ onSubmit }) => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="input-field"
+                    className={styles.inputField}
                 />
             </div>
-            <div>
-                <label htmlFor="email">Email:</label>
+            <div className="flex flex-col space-y-2">
+                <label htmlFor="email" className="font-semibold">Email:</label>
                 <input
                     type="email"
                     id="email"
@@ -83,26 +83,26 @@ const SleepDataForm: React.FC<SleepDataFormProps> = ({ onSubmit }) => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="input-field"
+                    className={styles.inputField}
                 />
             </div>
-            <div>
-                <label htmlFor="gender">Gender:</label>
+            <div className="flex flex-col space-y-2">
+                <label htmlFor="gender" className="font-semibold">Gender:</label>
                 <select
                     id="gender"
                     name="gender"
                     value={formData.gender}
                     onChange={handleChange}
                     required
-                    className="input-field"
+                    className={styles.inputField}
                 >
                     <option value="">Select Gender</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
             </div>
-            <div>
-                <label htmlFor="date">Date:</label>
+            <div className="flex flex-col space-y-2">
+                <label htmlFor="date" className="font-semibold">Date:</label>
                 <input
                     type="date"
                     id="date"
@@ -110,11 +110,11 @@ const SleepDataForm: React.FC<SleepDataFormProps> = ({ onSubmit }) => {
                     value={formData.date}
                     onChange={handleChange}
                     required
-                    className="input-field"
+                    className={styles.inputField}
                 />
             </div>
-            <div>
-                <label htmlFor="sleepTime">Sleep Time (hours):</label>
+            <div className="flex flex-col space-y-2">
+                <label htmlFor="sleepTime" className="font-semibold">Sleep Time (hours):</label>
                 <input
                     type="number"
                     id="sleepTime"
@@ -122,13 +122,13 @@ const SleepDataForm: React.FC<SleepDataFormProps> = ({ onSubmit }) => {
                     value={formData.sleepTime}
                     onChange={handleChange}
                     required
-                    className="input-field"
+                    className={styles.inputField}
                 />
             </div>
-            <button type="submit" disabled={loading} className="submit-button">
+            <button type="submit" disabled={loading} className={styles.submitButton}>
                 {loading ? 'Submitting...' : 'Submit'}
             </button>
-            {error && <p className="error-message">{error}</p>}
+            {error && <p className={styles.errorMessage}>{error}</p>}
         </form>
     );
 };

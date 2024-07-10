@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { fetchSleepDataForLastSevenDays  } from '@/services/api';
 import { useSleepData } from '@/contexts/SleepDataContext'; 
+import styles from '../styles/table.module.css';
+import Image from 'next/image';
+import logo from '../../public/logo.jpg'
 
 interface SleepData {
     date: string;
@@ -30,9 +33,11 @@ const TablePage: React.FC<TableProps> = () => {
     };
 
 return (
-    <div style={{ textAlign: 'center' }}>
-      <h1>Sleep Records for {name}</h1>
-      <table style={{ tableLayout: 'auto', alignItems: 'center', width: '100%', borderCollapse: 'collapse' }}>
+    <div className={styles.container}>
+      <Image src={logo} alt="Logo" className={styles.logo} style={{ width: 150, height: 150, margin: 20 }} />
+      <h1 className={styles.title}>Sleep Tracker App</h1>
+      <h1 className={styles.title}>Sleep Records for {name}</h1>
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>Date</th>

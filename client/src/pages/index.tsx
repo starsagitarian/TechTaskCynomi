@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import Router from 'next/router';
+import Image from 'next/image';
+import logo from '../../public/logo.jpg';
+import divider from '../../public/divider.png';
+import styles from '../styles/index.module.css';
 
 const Home: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -12,20 +16,21 @@ const Home: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    // API call to submit the data
-    // On success navigate to the table page
     Router.push('/form');
   };
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h1>Cynomi tech task</h1>
-      <h4>*=======================*</h4>
-      <h2>Sleep Tracker App</h2>
-      <form onSubmit={handleSubmit}>
-        {/* Input fields */}
-        <button type="submit">Push in your sleep details</button>
-      </form>
+    <div className={styles.container}>
+      <Image src={divider} alt="Divider" className={styles.dividerUp} />
+      <Image src={logo} alt="Logo" className={styles.logo}/>
+      <Image src={divider} alt="Divider" className={styles.dividerDown} />
+      <h1 className={styles.title}>Cynomi tech task</h1>
+      <h2 className={styles.label}>Sleep Tracker App</h2>
+      <p className={styles.description}>Submitted by: <strong>Baiju Joseph</strong>
+      </p>
+
+        <button type="submit" className={styles.submitButton} onClick={handleSubmit}>Push in your sleep details</button>
+
     </div>
   );
 };
