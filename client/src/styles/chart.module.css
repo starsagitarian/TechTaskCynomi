@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #b1daf5, #b1daf5);
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  background-image: linear-gradient(to right, #b1daf5, #b1daf5);
+  font-family: 'Arial', sans-serif; /* Use a similar sans-serif font */
+  border-radius: 0.5rem; /* Tailwind's rounded-md */
+  margin: 1rem;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 2, 2);
+}
+
+.chart {
+  height: 400;
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 2, 2);
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 2rem; /* Larger font size for labels */
+  color: black; /* White color for better readability */
+  font-weight: bold; /* Bold font weight for labels */
+  text-align: center;
+}
+
+.button {
+  padding: 10px 15px;
+  margin: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}

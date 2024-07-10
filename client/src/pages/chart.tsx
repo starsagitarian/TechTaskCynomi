@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import ReactECharts from 'echarts-for-react';
 import { fetchSleepDataForLastSevenDays } from '@/services/api';
 import { useSleepData } from '@/contexts/SleepDataContext';
+import Image from 'next/image';
+import logo from '../../public/logo.jpg';
+import styles from '../styles/chart.module.css';
 
 const ChartPage: React.FC = () => {
   const router = useRouter();
@@ -54,10 +57,14 @@ const ChartPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <ReactECharts option={options} style={{ height: 400 }} />
-        <button onClick={() => router.push('/')}>Home</button>
-        <button onClick={() => router.push('/table?userId=${userId}')}>Back To Table</button>
+    <div className={styles.container}>
+      <Image src={logo} alt="Logo" className={styles.logo} onClick={() => router.push('/')}/>
+      <h1 className={styles.title}>Sleep Tracker App</h1>
+      <ReactECharts option={options} style={{ 
+        height: 400, 
+        width: '100%', 
+        color: 'black' }} />
+      <button className={styles.button} onClick={() => router.push(`/table?userId=${userId}&name=${encodeURIComponent(name)}`)}>Back To Table</button>
     </div>
   );
 };

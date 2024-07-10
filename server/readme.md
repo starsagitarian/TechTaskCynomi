@@ -79,6 +79,28 @@ This will start the server on the port specified in your `.env` file.
 - Fetches sleep data for the last seven days for a specific user.
 - URL Parameters: userId is the user's unique ID.
 
+### 6. DynamoDB configuration
+- its essenstial you have a AWS account where you would need to create a dynamoDB database with the following two tables
+  a. UserProfiles: with the following items
+      
+    UserId: string;
+    email: string;
+    name: string
+    gender: string;
+
+  b. UserSleepEntry: with the following items
+
+    UserId: string;
+    entryId: string;
+    date: string;
+    sleepTime: number 
+
+UserProfiles table have been provided with a Global Secondary Index (GSI) which is email: string. UserPrfiles does not contain a sort key while UserSleepEntry has a sort key date: string. Please provide in the keys in a dotenv file with the following structure
+
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID || '',
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || ''  
+
+Please configure the two tables accordingly. 
 
 ## Notes
 

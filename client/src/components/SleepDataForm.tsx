@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { postUserData, fetchUserData } from '@/services/api';
 import { useRouter } from 'next/router';
 import styles from '../styles/sleepDataForm.module.css';
+import { useSleepData } from '@/contexts/SleepDataContext';
 
 interface FormData {
   name: string;
@@ -33,6 +34,8 @@ const SleepDataForm: React.FC<SleepDataFormProps> = ({ onSubmit }) => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
+    const { clearSleepData } = useSleepData();
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
@@ -40,6 +43,7 @@ const SleepDataForm: React.FC<SleepDataFormProps> = ({ onSubmit }) => {
 
         try {
             const data = await postUserData(formData);
+            clearSleepData();
             const userData = await fetchUserData(formData.email);
             if (userData) {
                 router.push({
