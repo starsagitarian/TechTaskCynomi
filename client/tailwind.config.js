@@ -1,10 +1,7 @@
-import { defineConfig } from 'tailwindcss'
+const { defaultTheme } = require('tailwindcss/defaultTheme');
 
-export default defineConfig({
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}'
-  ],
+module.exports = {
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -12,10 +9,10 @@ export default defineConfig({
         'button-blue': '#0056b3',
         'button-hover-blue': '#004494',
       },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-      },
+      // fontFamily: {
+      //   sans: ['Inter', ...defaultTheme.fontFamily.sans], // Spread operator to merge with default fonts
+      // },
     },
   },
   plugins: [],
-})
+};
