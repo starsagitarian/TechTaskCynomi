@@ -14,15 +14,17 @@ const Home: React.FC = () => {
     event.preventDefault();
     // API call to submit the data
     // On success navigate to the table page
-    Router.push('/table');
+    Router.push('/form');
   };
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <h1>Sleep Tracker App</h1>
+      <h1>Cynomi tech task</h1>
+      <h4>*=======================*</h4>
+      <h2>Sleep Tracker App</h2>
       <form onSubmit={handleSubmit}>
         {/* Input fields */}
-        <button type="submit">Submit</button>
+        <button type="submit">Push in your sleep details</button>
       </form>
     </div>
   );
