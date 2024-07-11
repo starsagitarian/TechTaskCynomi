@@ -22,7 +22,7 @@
 
 .submitButton {
   width: 100%;
-  background-color: #4CAF50;
+  background-color: #0096f5;
   color: white;
   padding: 14px 20px;
   margin: 20px 0 20px 0;
@@ -32,7 +32,7 @@
 }
 
 .submitButton:hover {
-  background-color: #45a049;
+  background-color: #015994;
 }
 
 .errorMessage {

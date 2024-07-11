@@ -34,7 +34,7 @@
 }
 
 .submitButton {
-  background-color: #0056b3; /* Adjust button color */
+  background-color: #0096f5; /* Adjust button color */
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.375rem; /* Tailwind's rounded-md */
@@ -43,5 +43,5 @@
 }
 
 .submitButton:hover {
-  background-color: #004494; /* Adjust hover color */
+  background-color: #015994; /* Adjust hover color */
 }
