@@ -1,6 +1,6 @@
 # Cynomi Sleep Tracker App Client
 
-This is the front-end client for the Cynomi Sleep Tracker App, built using Next.js and styled with Tailwind CSS. It provides a user interface for tracking and analyzing sleep patterns.
+This is the front-end client for the Cynomi Sleep Tracker App, built using Next.js, and styled with CSS modules and Tailwind CSS. It provides a user interface for tracking and analyzing sleep patterns.
 
 ## Features
 
