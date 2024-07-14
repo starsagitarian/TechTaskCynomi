@@ -24,14 +24,14 @@ To set up the client locally, follow these steps:
 
 This will start the Next.js development server on http://localhost:3000. Navigate to this URL in your web browser to view the application.
 
-Structure
+## Structure
 - pages/: Contains all the page components. Each page is associated with a route based on its file name.
 - components/: Reusable UI components.
 - styles/: CSS and Tailwind configuration files.
 - services/: Services for API interactions.
 - contexts/: React contexts for state management across components.
 
-API Integration
+## API Integration
 
 The client interacts with a backend server via RESTful APIs. Make sure the backend server is running and accessible to fetch and post data as expected. Please make sure you have a dynamoDB set up for this application to run appropriately. You can find the respective documentation in the server/ folder.
 
