@@ -10,7 +10,7 @@ import styles from '../styles/chart.module.css';
 const ChartPage: React.FC = () => {
   const router = useRouter();
   const { userId, date, name } = router.query as { userId: string; date: string; name: string};
-  const { sleepData } = useSleepData();
+  // const { sleepData } = useSleepData();
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
@@ -62,8 +62,8 @@ const ChartPage: React.FC = () => {
       <h1 className={styles.title}>Sleep Tracker App</h1>
       <ReactECharts option={options} style={{ 
         height: 400, 
-        width: '100%', 
-        color: 'black' }} />
+        width: '100%',
+        }} />
       <button className={styles.button} onClick={() => router.push(`/table?userId=${userId}&name=${encodeURIComponent(name)}`)}>Back To Table</button>
     </div>
   );
