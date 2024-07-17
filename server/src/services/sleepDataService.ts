@@ -9,11 +9,21 @@ const dbClient = new DynamoDBClient({ region: process.env.AWS_REGION });
 const dynamoDB = DynamoDBDocumentClient.from(dbClient);
 
 async function addSleepData(sleepData: UserSleepEntry): Promise<void> {
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset the time to start of the day
+
+    // *** Check if the date of the sleep data is in the future ***
+    if (new Date(sleepData.date) > today) {
+        throw new Error("Cannot add sleep data for future dates.");
+    }
+
     const params = {
         TableName: 'UserSleepEntry',
         Item: {
             ...sleepData,
-            UserId: sleepData.UserId
+            UserId: sleepData.UserId,
+            date: sleepData.date
         },
     };
 
@@ -28,15 +38,18 @@ async function addSleepData(sleepData: UserSleepEntry): Promise<void> {
 
 const fetchSleepDataForLastSevenDays = async (userId: string): Promise<UserSleepEntry[]> => {
     const today = new Date();
-    const sevenDaysAgo = new Date(today.setDate(today.getDate() - 7));
+    today.setHours(0, 0, 0, 0); // Reset the time to start of the day
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(today.getDate() - 7);
 
     const params: QueryCommandInput = {
         TableName: 'UserSleepEntry',
-        KeyConditionExpression: 'UserId = :userId AND #date >= :sevenDaysAgo',
+        KeyConditionExpression: 'UserId = :userId AND #date BETWEEN :sevenDaysAgo AND :today',
         ExpressionAttributeNames: { '#date': 'date' },
         ExpressionAttributeValues: {
             ':userId': userId,
-            ':sevenDaysAgo': sevenDaysAgo.toISOString().split('T')[0] as unknown as AttributeValue
+            ':sevenDaysAgo': sevenDaysAgo.toISOString().split('T')[0],
+            ':today': today.toISOString().split('T')[0]
         },
         ConsistentRead: true,
         ScanIndexForward: false

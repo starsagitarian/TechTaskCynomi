@@ -4,7 +4,15 @@ const api = axios.create({
   baseURL: 'http://localhost:3054/api',
 });
 
-const postUserData = async (formData: {name: string; email: string;  gender: string; date: string; sleepTime: number}) => {
+interface FormData {
+  name: string;
+  email: string;
+  gender: string;
+  date: string;
+  sleepTime: number;
+}
+
+const postUserData = async (formData: FormData) => {
 const response = await fetch(`http://localhost:3054/api/user-data`, {
     method: 'POST',
     headers: {
